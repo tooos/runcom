@@ -1,0 +1,32 @@
+/dbc/pa-dbc1125/jianxiongj/usr/Python-2.7.14/configure --enable-optimizations --enable-shared --prefix=/dbc/pa-dbc1125/jianxiongj/usr
+
+export LD_LIBRARY_PATH=/dbc/pa-dbc1125/jianxiongj/usr/python2.7.14/lib
+
+export vi_cv_path_python=/dbc/pa-dbc1125/jianxiongj/usr/bin/python
+export vi_cv_path_python_epfx=/dbc/pa-dbc1125/jianxiongj/usr
+export vi_cv_path_python_pfx=/dbc/pa-dbc1125/jianxiongj/usr
+
+/dbc/pa-dbc1125/jianxiongj/usr/bin/Vim8/configure --with-features=huge \
+            --with-compiledby=jianxiongj@vmware.com \
+            --enable-pythoninterp=yes \
+            --with-python-config-dir=/dbc/pa-dbc1125/jianxiongj/usr/lib/python2.7/config \
+            --prefix=/dbc/pa-dbc1125/jianxiongj/usr
+
+
+
+../gcc-7.2.0/configure --prefix=/dbc/pa-dbc1125/jianxiongj/usr --enable-shared --enable-threads=posix --enable-__cxa_atexit --enable-clocale=gnu --enable-languages=all
+
+
+
+export LD_LIBRARY_PATH=$DBC_ROOT/usr/gcc7.2.0/lib64:$LD_LIBRARY_PATH
+./configure --prefix=/dbc/pa-dbc1125/jianxiongj/usr
+
+
+
+cmake -G "Unix Makefiles" -DCMAKE_CXX_COMPILER=/dbc/pa-dbc1125/jianxiongj/usr/bin/g++ -DCMAKE_C_COMPILER=/dbc/pa-dbc1125/jianxiongj/usr/bin/gcc -DLLVM_BUILD_LLVM_DYLIB=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/dbc/pa-dbc1125/jianxiongj/usr -DGCC_INSTALL_PREFIX=/dbc/pa-dbc1125/jianxiongj/usr ../llvm
+
+
+
+cmake -G "Unix Makefiles" -DEXTERNAL_LIBCLANG_PATH=/dbc/pa-dbc1125/jianxiongj/usr/lib/libclang.so.5.0 -DPYTHON_INCLUDE_DIR=/dbc/pa-dbc1125/jianxiongj/usr/include/python2.7 -DPYTHON_LIBRARY=/dbc/pa-dbc1125/jianxiongj/usr/lib/libpython2.7.so.1.0 . ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
+
+cmake --build . --target ycm_core --config Release -- -j 4
